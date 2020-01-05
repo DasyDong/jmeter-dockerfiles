@@ -1,0 +1,26 @@
+{ spec:
+   { restartPolicy: 'Never',
+     containers:
+      [ { image: 'jmeter-master:v1.0.1',
+          name: 'test',
+          env:
+           [ { name: 'PAAS_TYPE', value: 'lptp' },
+             { name: 'JMETER_TEST_PLAN', value: 'test-jmeter-test-plan.jmx' },
+             { name: 'JMETER_TEST_LOG', value: 'test-jmeter-test-log.log' },
+             { name: 'JMETER_TEST_REPORT',
+               value: 'test-jmeter-test-report.zip' },
+             { name: 'JMETER_SLAVE_HOSTS', value: '1.1.1.2,1.2.4.1' },
+             { name: 'JMETER_LOG', value: 'test-jmeter.log' },
+             { name: 'ST_CONTAINER',
+               valueFrom: { secretKeyRef: { name: 'test', key: 'random' } } },
+             { name: 'ST_KEY',
+               valueFrom: { secretKeyRef: { name: 'test', key: 'random' } } } ],
+          imagePullPolicy: 'IfNotPresent',
+          resources:
+           { requests: { memory: 500Mi, cpu: 2 },
+             limits: { memory: 500Mi, cpu: 2 } } } ],
+     dnsPolicy: 'Default' },
+  metadata:
+   { labels: { app: 'test-jmeter-master-1' },
+     namespace: 'lptp',
+     name: 'test-jmeter-master-1' } }
