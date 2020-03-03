@@ -62,3 +62,11 @@ shell脚本中使用的ST_CONTAINER 环境变量， 需要在yaml中定义
      name: 'test-jmeter-master-1' } }
 
 ```
+
+最后产出报告:
+<!-- ![jmeter test report](jmeterreport.jpg "Title") -->
+
+<img src="jmeterreport.jpg" width = "400" height = "260" alt="jmeter test report"
+align=center>
+
+报告是压缩成zip包后可以下载到本地查看， 如果想要在线查看， 可以起个django服务， 这部分代码我就不上传了，如果有需要也可以给我留言
